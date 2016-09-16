@@ -1,0 +1,17 @@
+#===============================================================================
+# print (wikipedia.search("Who is Gopichand", results=3, suggestion=False))
+# speak(wikipedia.search("Who is Gopichand", results=3, suggestion=False))
+# data=listen()
+# speech_recognition.Recognizer
+# speak (wikipedia.summary(data, sentences=2))
+#===============================================================================
+
+#print (wikipedia.summary("Gopichand", sentences=3))
+#===============================================================================
+#   
+# opener = urllib3.make_headers
+# opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+# infile = opener.open('http://en.wikipedia.org/w/index.php?title=Albert_Einstein&printable=yes')
+# page = infile.read()
+# print(page)
+#===============================================================================

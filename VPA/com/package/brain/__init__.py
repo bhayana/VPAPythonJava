@@ -18,15 +18,17 @@ recognizer = speech_recognition.Recognizer()
 def listen():
     with speech_recognition.Microphone() as source:
         recognizer.adjust_for_ambient_noise(source)
+        print("Set minimum energy threshold to {}".format(recognizer.energy_threshold))
         #=======================================================================
-        # recognizer.energy_threshold = 4000
+        # a = recognizer.record(source, duration=4, offset=False)
         #=======================================================================
-        recognizer.record(source, duration=4, offset=False)
         audio = recognizer.listen(source)
-    
+        #=======================================================================
+        # print(a)
+        #=======================================================================
+        print(audio)
     try:
         return recognizer.recognize_google(audio)
-        # or: return recognizer.recognize_google(audio)
     except speech_recognition.UnknownValueError:
         print("Could not understand audio")
         return "Could not understand audio"
@@ -54,23 +56,10 @@ if "Could not understand audio" in data:
     speak("please speak again")
     data=listen()
 print (wikipedia.search(data, results=3, suggestion=False))
-#===============================================================================
-# print (wikipedia.search("Who is Gopichand", results=3, suggestion=False))
-# speak(wikipedia.search("Who is Gopichand", results=3, suggestion=False))
-# data=listen()
-# speech_recognition.Recognizer
-# speak (wikipedia.summary(data, sentences=2))
-#===============================================================================
+speak("which one")
+data=listen()
+speak(wikipedia.summary(data, sentences=2, chars=0, auto_suggest=True, redirect=True))
 
-#print (wikipedia.summary("Gopichand", sentences=3))
-#===============================================================================
-#   
-# opener = urllib3.make_headers
-# opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-# infile = opener.open('http://en.wikipedia.org/w/index.php?title=Albert_Einstein&printable=yes')
-# page = infile.read()
-# print(page)
-#===============================================================================
 #===============================================================================
 # while 1:
 #     speak("my job")
